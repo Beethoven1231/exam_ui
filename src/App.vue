@@ -1,19 +1,22 @@
+<!--网页页面总布局-->
+<!--JS代码-->
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
 </script>
 
+<!--HTML代码-->
 <template>
   <header>
+    <!--显示图片-->
     <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
 
     <div class="wrapper">
-      <HelloWorld msg="You did it!555444" />
+      <HelloWorld msg="学校分数管理系统" />
 
       <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-        <RouterLink to="/school">学校管理</RouterLink>
+        <RouterLink to="/">主页</RouterLink>
+        <RouterLink to="/school">查看学校</RouterLink>
       </nav>
     </div>
   </header>
@@ -21,6 +24,7 @@ import HelloWorld from './components/HelloWorld.vue'
   <RouterView />
 </template>
 
+<!--CSS代码-->
 <style scoped>
 header {
   line-height: 1.5;
