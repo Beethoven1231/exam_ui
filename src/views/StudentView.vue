@@ -32,7 +32,7 @@
       <template #footer>
         <span class="dialog-footer">
           <el-button @click="dialogFormVisible = false">返回</el-button>
-          <el-button type="primary" @click="update(form)">确认</el-button>
+          <el-button type="primary" @click="update()">确认</el-button>
         </span>
       </template>
     </el-dialog>
@@ -52,7 +52,7 @@
       <template #footer>
         <span class="dialog-footer">
           <el-button @click="dialogFormVisible2 = false">返回</el-button>
-          <el-button type="primary" @click="insert(form)">确认</el-button>
+          <el-button type="primary" @click="insert()">确认</el-button>
         </span>
       </template>
     </el-dialog>
@@ -128,7 +128,7 @@ const handleDelete = (id) => {
     })
 }
 
-const update = (form) => {
+const update = () => {
   axios.get("http://localhost:5106/StudentTable/update?id=" + form.id + "&name=" + form.name + "&birthday=" + form.birthday + "&classId=" + form.classId)
   .then(() => {
     dialogFormVisible.value = false
@@ -137,10 +137,14 @@ const update = (form) => {
 }
 
 const handleInsert = () => {
+  form.id = 0
+  form.name = ''
+  form.birthday = ''
+  form.classId = ''
   dialogFormVisible2.value = true
 }
 
-const insert = (form) => {
+const insert = () => {
   axios.get("http://localhost:5106/StudentTable/insert?name="+ form.name +"&birthday="+ form.birthday +"&classId=" + form.classId)
   .then(() => {
     dialogFormVisible2.value = false
