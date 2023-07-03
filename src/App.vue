@@ -18,6 +18,7 @@ import HelloWorld from './components/HelloWorld.vue'
         <RouterLink to="/">主页</RouterLink>
         <RouterLink to="/school">查看学校</RouterLink>
         <RouterLink to="/class">查看班级</RouterLink>
+        <RouterLink to="/student">查看学生</RouterLink>
       </nav>
     </div>
   </header>
