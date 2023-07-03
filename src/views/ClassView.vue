@@ -1,7 +1,12 @@
 <!--HTML代码,显示数据-->
 <template>
   <div class="classtable">
-    <pre>{{ data }}</pre>
+    <el-table :data="data" border style="width: 100%">
+      <el-table-column prop="id" label="ID" width="100" />
+      <el-table-column prop="grade" label="创建时间" />
+      <el-table-column prop="classno" label="班级编号" />
+      <el-table-column prop="schoolId" label="所属学校" />
+    </el-table>
   </div>
 </template>
 

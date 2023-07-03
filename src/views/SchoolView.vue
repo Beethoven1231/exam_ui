@@ -1,7 +1,10 @@
 <!--HTML代码,显示数据-->
 <template>
   <div class="schooltable">
-    <pre>{{ data }}</pre>
+    <el-table :data="data" border style="width: 100%">
+      <el-table-column prop="id" label="ID" width="100" />
+      <el-table-column prop="name" label="名称" />
+    </el-table>
   </div>
 </template>
 
@@ -14,9 +17,9 @@ import { onMounted } from 'vue';
 const data = ref([])
 
 // 访问url并获取数据
-onMounted(()=>{
+onMounted(() => {
   axios.get('http://localhost:5106/SchoolTable/select')
-    .then((res)=>{
+    .then((res) => {
       data.value = res.data
     })
 })
