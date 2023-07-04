@@ -6,6 +6,13 @@
       <el-table-column prop="grade" label="创建时间" />
       <el-table-column prop="classno" label="班级编号" />
       <el-table-column prop="schoolId" label="所属学校" />
+      <!--显示两个按钮---->
+      <el-table-column label="操作" width="180">
+        <template #default="scope">
+          <el-button size="small">修改</el-button>
+          <el-button size="small" type="danger">删除</el-button>
+        </template>
+      </el-table-column>
     </el-table>
   </div>
 </template>

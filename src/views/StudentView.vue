@@ -2,12 +2,13 @@
 <template>
   <div class="studenttable">
     <el-button size="small" type="success" @click="handleInsert()">新增</el-button>
-    <!--显示学生表-->
+    <!--显示学生表数据-->
     <el-table :data="data" border style="width: 100%">
       <el-table-column prop="id" label="ID" width="100" />
       <el-table-column prop="name" label="名称" />
       <el-table-column prop="birthday" label="生日" />
       <el-table-column prop="classId" label="所属班级" />
+      <!--显示两个按钮-->
       <el-table-column label="操作" width="180">
         <template #default="scope">
           <el-button size="small" @click="handleEdit(scope.row, form)">修改</el-button>
@@ -68,15 +69,19 @@ import { onMounted } from 'vue';
 import { ElMessage, ElMessageBox } from 'element-plus'
 import { reactive } from 'vue'
 
+// 新建两个变量，控制弹窗显示
 const dialogFormVisible = ref(false)
 const dialogFormVisible2 = ref(false)
+// 文字样式
 const formLabelWidth = '140px'
+// 输入格式
 const form = reactive({
   id: 0,
   name: '',
   birthday: '',
   classId: '',
 })
+
 // 新建空表
 const data = ref([])
 
@@ -92,6 +97,7 @@ const init = () => {
     })
 }
 
+// 修改按钮按下
 const handleEdit = (row, form) => {
   form.id = row.id
   form.name = row.name
@@ -100,6 +106,7 @@ const handleEdit = (row, form) => {
   dialogFormVisible.value = true
 }
 
+// 删除按钮按下
 const handleDelete = (id) => {
   ElMessageBox.confirm(
     '删除后数据无法恢复，请谨慎操作',
@@ -128,6 +135,7 @@ const handleDelete = (id) => {
     })
 }
 
+// 修改弹窗的确认按钮按下
 const update = () => {
   axios.get("http://localhost:5106/StudentTable/update?id=" + form.id + "&name=" + form.name + "&birthday=" + form.birthday + "&classId=" + form.classId)
   .then(() => {
@@ -136,6 +144,7 @@ const update = () => {
   })
 }
 
+// 新增按钮按下
 const handleInsert = () => {
   form.id = 0
   form.name = ''
@@ -144,6 +153,7 @@ const handleInsert = () => {
   dialogFormVisible2.value = true
 }
 
+// 新增弹窗的确认按钮按下
 const insert = () => {
   axios.get("http://localhost:5106/StudentTable/insert?name="+ form.name +"&birthday="+ form.birthday +"&classId=" + form.classId)
   .then(() => {
@@ -154,6 +164,7 @@ const insert = () => {
 </script>
 
 
+<!--编辑样式-->
 <style scoped>
 @media (min-width: 1024px) {
   .studenttable {
